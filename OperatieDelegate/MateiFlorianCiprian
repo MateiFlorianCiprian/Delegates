@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Csharp_saipem_DelegateOperatii
+{
+    class NumeresiOperatii
+    {
+        public double x { get; set; }
+        public double y { get; set; }
+        public double operatie(Func<NumeresiOperatii, double> function)
+        {
+            return function(this);
+        }
+
+
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            NumeresiOperatii no = new NumeresiOperatii();
+            no.x = 3;
+            no.y = 2;
+            Console.WriteLine(no.operatie((x => { return x.x - x.y; })));
+            Console.WriteLine(no.operatie((x => { return x.x * x.y; })));
+        }
+    }
+}
